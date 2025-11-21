@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Select Your Region</title>
+    <meta name="description" content="Welcome to our company. Please select your region to continue.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Subtle Geometric Background */
+        .background-pattern {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 60%, transparent 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 2rem;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out backwards;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .arrow-icon {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: var(--accent-color);
+        }
+
+        /* Hover Effects */
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-pattern"></div>
+    <main class="container">
+        <header class="header">
+            <h1 class="title">Welcome</h1>
+            <p class="subtitle">Please select your destination</p>
+        </header>
+
+        <div class="cards-container">
+            <a href="#" class="card" id="global-link">
+                <div class="card-content">
+                    <span class="card-icon">🌍</span>
+                    <h2>Global Site</h2>
+                    <p>Visit our new main website</p>
+                    <div class="arrow-icon">→</div>
+                </div>
+                <div class="card-glow"></div>
+            </a>
+
+            <a href="#" class="card" id="canada-link">
+                <div class="card-content">
+                    <span class="card-icon">🇨🇦</span>
+                    <h2>Canada</h2>
+                    <p>Visit our Canadian website</p>
+                    <div class="arrow-icon">→</div>
+                </div>
+                <div class="card-glow"></div>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+
+</html>
